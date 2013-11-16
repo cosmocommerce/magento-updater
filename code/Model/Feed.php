@@ -13,7 +13,7 @@
  * to license@magentocommerce.com so we can send you a copy immediately.
  *
  * @category    CosmoCommerce
- * @package     CosmoCommerce_Alipay
+ * @package     CosmoCommerce_Updater
  * @copyright   Copyright (c) 2009-2013 CosmoCommerce,LLC. (http://www.cosmocommerce.com)
  * @contact :
  * T: +86-021-66346672

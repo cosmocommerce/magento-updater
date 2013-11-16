@@ -84,7 +84,7 @@
 	<default>
 		<cosmocommerce>
 			<feed>
-				<url>www.cosmocommerce.com/update/feed.xml</url>
+				<url>update.cosmocommerce.com/feed.xml</url>
 				<use_https>0</use_https>
 				<frequency>24</frequency>
 				<enable>1</enable>
