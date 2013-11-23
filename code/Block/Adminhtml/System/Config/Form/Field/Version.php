@@ -36,7 +36,7 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Form_Field_Version ext
             {
                 console.log(this.value);
                 var url = "'.Mage::getSingleton("adminhtml/url")->getUrl("*/updates/update").'"+"?repo="+this.value;
-                if (confirm("模块将会覆盖代码.")) {
+                if (confirm("模块将会更新代码.")) {
                     if (Prototype.Browser.IE) {
                         var generateLink = new Element("a", {href: url});
                         $$("body")[0].insert(generateLink);
@@ -113,13 +113,17 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Form_Field_Version ext
                 
                 //$remoteref = Git2\Reference::lookup($repo, "refs/remotes/origin/master");
                 //print_r($repo->lookup());
-                ini_set('display_errors',1);
+                //ini_set('display_errors',1);
                 
                 //以后考虑要做一个模块，定时把github版本记录下来。不用经常远程查询
                 
+                $ch =  curl_init("https://api.github.com/repos/cosmocommerce/".$foldername."/commits");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $content = json_decode(curl_exec($ch));
+                
                 //$content=json_decode(file_get_contents("https://api.github.com/repos/cosmocommerce/".$foldername."/commits"));
-                //$remoteversion=$content[0]->sha;
-                $remoteversion='af';
+                $remoteversion=$content[0]->sha;
+                //$remoteversion='af';
                 
                 
                 
