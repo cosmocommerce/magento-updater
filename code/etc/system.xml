@@ -39,6 +39,26 @@
 			<show_in_website>1</show_in_website>
 			<show_in_store>1</show_in_store>
 			<groups>
+				<updater>
+					<label>Updater </label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+                        <version translate="label comment">
+							<label>Version:</label>
+							<frontend_type>text</frontend_type>
+							<frontend_model>cosmocommerce/adminhtml_system_config_form_field_version</frontend_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</version>		
+					</fields>	
+
+				</updater>		
 				<feed>
 					<label>Update Notifications</label>
 					<frontend_type>text</frontend_type>
@@ -48,7 +68,7 @@
 					<show_in_store>1</show_in_store>
 					<fields>
 						<enable translate="label">
-							<label>Enable </label>
+							<label>Enable</label>
 							<comment><![CDATA[ <b>To get the latest security updates we suggest to enable this module.</b><br /><img src="http://www.cosmocommerce.com/images/logo.png" /><br />Contact Information:<br />Tel:+86-021-66346672<br />Support:support@cosmocommerce.com <br />Sales:sales@cosmocommerce.com<br />Website:<a href="http://www.cosmocommerce.com" target="_blank" >CosmoCommerce.com</a>]]></comment>
 							<frontend_type>select</frontend_type>
 							<sort_order>90</sort_order>
