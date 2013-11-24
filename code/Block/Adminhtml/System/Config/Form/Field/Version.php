@@ -27,8 +27,7 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Form_Field_Version ext
             $html.=implode("<br />",$output);
             */
             
-            
-            $html.="<ul style='font-size: 11px;'>";     
+             
             $html.='            
             <script type="text/javascript">
             //<![CDATA[
@@ -96,6 +95,7 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Form_Field_Version ext
             </script>';
             
             
+            $html.="<ul style='font-size: 11px;'>";    
             foreach(glob($modman_path."/*",GLOB_ONLYDIR) as $_subfolder){
             
                 $repo = new Git2\Repository($_subfolder);
@@ -117,13 +117,28 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Form_Field_Version ext
                 
                 //以后考虑要做一个模块，定时把github版本记录下来。不用经常远程查询
                 
-                $ch =  curl_init("https://api.github.com/repos/cosmocommerce/".$foldername."/commits");
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                $content = json_decode(curl_exec($ch));
                 
-                //$content=json_decode(file_get_contents("https://api.github.com/repos/cosmocommerce/".$foldername."/commits"));
-                $remoteversion=$content[0]->sha;
-                //$remoteversion='af';
+                
+                
+               //Set maximum age of cache file before refreshing it
+                $cacheLife = 1800; // in seconds
+                $cacheFileName="/tmp/".$foldername;
+                if (!file_exists($cacheFileName) or (time() - filemtime($cacheFileName) >= $cacheLife)){
+                    $ch =  curl_init("https://api.github.com/repos/cosmocommerce/".$foldername."/commits");
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $result=curl_exec($ch);
+                    $content = json_decode($result);
+                    
+                    //$content=json_decode(file_get_contents("https://api.github.com/repos/cosmocommerce/".$foldername."/commits"));
+                    $remoteversion=$content[0]->sha;
+                    file_put_contents($cacheFileName, ($result));
+                    //$remoteversion='af';
+                }
+                else{
+                    $content = json_decode(file_get_contents($cacheFileName));
+                    $remoteversion=$content[0]->sha;
+                    
+                }
                 
                 
                 
@@ -159,9 +174,9 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Form_Field_Version ext
                 </script>';
                 
                 if($version==$remoteversion){
-                    $html .= '版本一致:<br />'.$version."<br />";
+                    $html .= '版本一致:<br />'.$version.' '.date('Ymdhjs',filemtime($_subfolder))."<br />";
                 }else{
-                    $html .= '本地版本:<br />'.$version."<br />";
+                    $html .= '本地版本:<br />'.$version.' '.date('Ymdhjs',filemtime($_subfolder))."<br />";
                     $html .= '远程版本:<br />'.$remoteversion."<br />";
                 }
                     if($class=='fail'){

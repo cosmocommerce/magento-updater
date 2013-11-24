@@ -91,7 +91,7 @@ class CosmoCommerce_Updates_Adminhtml_UpdatesController extends Mage_Adminhtml_C
         if(file_exists($modman_path)){
         
             chdir($base_path);
-            $last_line = exec(escapeshellcmd('/var/www/bin/modman update ').escapeshellarg($repo), $output,$retval);
+            $last_line = exec(escapeshellcmd('/var/www/bin/modman update '.$repo), $output,$retval);
             $message=implode("<br />",$output);
             Mage::getSingleton('adminhtml/session')->addSuccess($message);
             $this->_redirectReferer('*/*/');
@@ -121,7 +121,7 @@ class CosmoCommerce_Updates_Adminhtml_UpdatesController extends Mage_Adminhtml_C
         if(file_exists($modman_path)){
         
             chdir($base_path);
-            $last_line = exec(escapeshellcmd('/var/www/bin/modman update ').escapeshellarg($repo.' --force'), $output,$retval);
+            $last_line = exec(escapeshellcmd('/var/www/bin/modman update '.$repo.' --force'), $output,$retval);
             $message=implode("<br />",$output);
             Mage::getSingleton('adminhtml/session')->addSuccess($message);
             $this->_redirectReferer('*/*/');
