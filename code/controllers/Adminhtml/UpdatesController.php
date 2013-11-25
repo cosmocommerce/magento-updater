@@ -20,15 +20,17 @@ class CosmoCommerce_Updates_Adminhtml_UpdatesController extends Mage_Adminhtml_C
             $this->_redirectReferer('*/*/');   
             return;
         }
-        if(isset($postData['user'])){
-            $user=$postData['user'];
+        $user=(Mage::getStoreConfig('cosmocommerce/required_settings/user'));
+        $pwd=(Mage::getStoreConfig('cosmocommerce/required_settings/pwd'));
+        if(($user)){
+            $user=$user;
         }else{
             Mage::getSingleton('adminhtml/session')->addError('请填写模块提交用户名');
             $this->_redirectReferer('*/*/');   
             return;
         }
-        if(isset($postData['pass'])){
-            $pass=$postData['pass'];
+        if(($pwd)){
+            $pass=$pwd;
         }else{
             Mage::getSingleton('adminhtml/session')->addError('请填写模块提交密码');
             $this->_redirectReferer('*/*/');   

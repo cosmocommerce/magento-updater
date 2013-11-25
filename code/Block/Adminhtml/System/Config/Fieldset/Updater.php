@@ -61,6 +61,12 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Fieldset_Updater
             $html .= '<div class="button-container"><button type="button"><span class="state-closed">'
                 . $this->__('模块环境正常') . '</span></button></div></div>';
             
+            //$version=Mage::getSingleton('adminhtml/config')->getSection('cosmocommerce')->modules->user;
+            $user=(Mage::getStoreConfig('cosmocommerce/required_settings/user'));
+            $pwd=(Mage::getStoreConfig('cosmocommerce/required_settings/pwd'));
+            //print_r(Mage::getSingleton('adminhtml/config')->getSection('cosmocommerce')->groups->modules->fields->required_settings->fields->user->value);
+            
+
             
             $html.='            
             <script type="text/javascript">
@@ -98,11 +104,7 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Fieldset_Updater
                 console.log(this.value);
                 var url = "'.Mage::getSingleton("adminhtml/url")->getUrl("*/updates/commit").'"+"?repo="+this.value;
                 var note = prompt("请输入记录这次版本的备注");
-                var user = prompt("请输入用户名");
-                var pass = prompt("请输入密码");
                 url=url+"&note="+note;
-                url=url+"&pass="+pass;
-                url=url+"&user="+user;
                 if (confirm("模块更新将会进行提交.")) {
                     if (Prototype.Browser.IE) {
                         var generateLink = new Element("a", {href: url});
