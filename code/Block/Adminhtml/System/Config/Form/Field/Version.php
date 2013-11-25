@@ -174,9 +174,9 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Form_Field_Version ext
                 </script>';
                 
                 if($version==$remoteversion){
-                    $html .= '版本一致:<br />'.$version.' '.date('Ymdhjs',filemtime($_subfolder))."<br />";
+                    $html .= '版本一致:<br />'.$version.'<br />'.date('Y-m-d h:j:s',filemtime($_subfolder))."<br />";
                 }else{
-                    $html .= '本地版本:<br />'.$version.' '.date('Ymdhjs',filemtime($_subfolder))."<br />";
+                    $html .= '本地版本:<br />'.$version.'<br />'.date('Y m-d h:j:s',filemtime($_subfolder))."<br />";
                     $html .= '远程版本:<br />'.$remoteversion."<br />";
                 }
                     if($class=='fail'){
