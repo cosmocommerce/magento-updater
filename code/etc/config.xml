@@ -25,7 +25,7 @@
 <config>
 	<modules>
 		<CosmoCommerce_Updates>
-			<version>0.1</version>
+			<version>0.2</version>
 		</CosmoCommerce_Updates>
 	</modules>
     <admin>
