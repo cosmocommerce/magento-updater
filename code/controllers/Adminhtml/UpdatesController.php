@@ -56,8 +56,6 @@ class CosmoCommerce_Updates_Adminhtml_UpdatesController extends Mage_Adminhtml_C
             
             $last_line_commit = exec(escapeshellcmd('git push '.$commiturl), $output_commit,$retval_commit);
             
-            echo 'git push '.$commiturl;
-            exit();
             //$last_line = exec('git commit -a -m "'.$note.'" ', $output,$retval);
            
             $message=implode("<br />",$output);
