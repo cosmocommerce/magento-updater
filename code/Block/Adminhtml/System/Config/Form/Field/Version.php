@@ -136,8 +136,11 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Form_Field_Version ext
                 }
                 else{
                     $content = json_decode(file_get_contents($cacheFileName));
-                    $remoteversion=$content[0]->sha;
-                    
+                    if($content){
+                        $remoteversion=$content[0]->sha;
+                    }else{
+                        $remoteversion='error';
+                    }
                 }
                 
                 
