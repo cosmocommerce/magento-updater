@@ -30,7 +30,7 @@ class CosmoCommerce_Updates_Adminhtml_UpdatesController extends Mage_Adminhtml_C
             return;
         }
         if(($pwd)){
-            $pass=$pwd;
+            $pass=Mage::helper('core')->decrypt($pwd);
         }else{
             Mage::getSingleton('adminhtml/session')->addError('请填写模块提交密码');
             $this->_redirectReferer('*/*/');   
@@ -47,13 +47,13 @@ class CosmoCommerce_Updates_Adminhtml_UpdatesController extends Mage_Adminhtml_C
             $config = new Git2\Config($mod_path."/.git/config");
             $remoteurl=( $config->get("remote")['origin']['url'] );
             
-            
             $extract=(explode('https://',$remoteurl));
+            $commiturl= "https://".$user.":".$pass."@".$extract[1];
+   
             
             chdir($mod_path);
             $last_line = exec(escapeshellcmd('git commit -am ').escapeshellarg($note), $output,$retval);
             
-            $commiturl= "https://".$user.":".$pass."@".$extract[1];
             $last_line_commit = exec(escapeshellcmd('git push --repo '.$commiturl), $output_commit,$retval_commit);
             
             
