@@ -52,14 +52,12 @@ class CosmoCommerce_Updates_Adminhtml_UpdatesController extends Mage_Adminhtml_C
    
             
             chdir($mod_path);
-            //$last_line = exec(escapeshellcmd('git commit -am ').escapeshellarg($note), $output,$retval);
+            $last_line = exec(escapeshellcmd('git commit -am '.$note), $output,$retval);
             
             $last_line_commit = exec(escapeshellcmd('git push '.$commiturl), $output_commit,$retval_commit);
-            echo 'git push '.$commiturl;
-            //$last_line = exec('git commit -a -m "'.$note.'" ', $output,$retval);
-           print_r($output_commit);
            
-           exit();
+            //$last_line = exec('git commit -a -m "'.$note.'" ', $output,$retval);
+         
             $message=implode("<br />",$output);
             $message.=implode("<br />",$output_commit);
             Mage::getSingleton('adminhtml/session')->addSuccess($message);
