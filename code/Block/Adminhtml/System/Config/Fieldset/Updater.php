@@ -206,16 +206,16 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Fieldset_Updater
                 $html .= '<li>';
                 $html .= '<div style="float:left">';
                 
-                $html .= '<button type="button" class="scalable '.$class.'"  style=""><span><span><span>'.$foldername.'</span></span></span></button> <button id="updateBtn'.$_htmlId.$foldername.'" value="'.$foldername.'" type="button" class="scalable save" onclick="" style=""><span><span><span>更新</span></span></span></button> ';
-                $html .= '<button id="commitBtn'.$_htmlId.$foldername.'" value="'.$foldername.'" type="button" class="scalable save" onclick="" style=""><span><span><span>提交</span></span></span></button> </div>';
+                $html .= '<button type="button" class="scalable '.$class.'"  style=""><span><span><span>'.$foldername.'</span></span></span></button> <button id="updateBtn'.$foldername.'" value="'.$foldername.'" type="button" class="scalable save" onclick="" style=""><span><span><span>更新</span></span></span></button> ';
+                $html .= '<button id="commitBtn'.$foldername.'" value="'.$foldername.'" type="button" class="scalable save" onclick="" style=""><span><span><span>提交</span></span></span></button> </div>';
                 
-                $html .= '<div style="float:right;"><button id="updatefBtn'.$_htmlId.$foldername.'" value="'.$foldername.'" type="button" class="scalable save" onclick="" style=""><span><span><span>强制更新</span></span></span></button> </div>';
+                $html .= '<div style="float:right;"><button id="updatefBtn'.$foldername.'" value="'.$foldername.'" type="button" class="scalable save" onclick="" style=""><span><span><span>强制更新</span></span></span></button> </div>';
                 $html .= '
                 <script type="text/javascript">
                 //<![CDATA[
-                Event.observe("updateBtn'.$_htmlId.$foldername.'", "click", redirectToUpdate);
-                Event.observe("updatefBtn'.$_htmlId.$foldername.'", "click", redirectToUpdatef);
-                Event.observe("commitBtn'.$_htmlId.$foldername.'", "click", redirectToCommit);
+                Event.observe("updateBtn'.$foldername.'", "click", redirectToUpdate);
+                Event.observe("updatefBtn'.$foldername.'", "click", redirectToUpdatef);
+                Event.observe("commitBtn'.$foldername.'", "click", redirectToCommit);
                 //]]>
                 </script>';
                 
