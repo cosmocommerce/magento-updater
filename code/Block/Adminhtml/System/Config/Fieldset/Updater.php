@@ -165,16 +165,18 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Fieldset_Updater
                //Set maximum age of cache file before refreshing it
                 $cacheLife = 1800; // in seconds
                 $cacheFileName="/tmp/".$foldername;
-                if (!file_exists($cacheFileName) or (time() - filemtime($cacheFileName) >= $cacheLife)){
+                if ((!file_exists($cacheFileName) or (time() - filemtime($cacheFileName) >= $cacheLife))){
                     $ch =  curl_init("https://api.github.com/repos/cosmocommerce/".$foldername."/commits");
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $result=curl_exec($ch);
                     $content = json_decode($result);
                     
                     //$content=json_decode(file_get_contents("https://api.github.com/repos/cosmocommerce/".$foldername."/commits"));
-                    $remoteversion=$content[0]->sha;
-                    file_put_contents($cacheFileName, ($result));
+                    //$remoteversion=$content[0]->sha;
+                    //file_put_contents($cacheFileName, ($result));
                     //$remoteversion='af';
+                    
+                        $remoteversion='error';
                 }
                 else{
                     $content = json_decode(file_get_contents($cacheFileName));
