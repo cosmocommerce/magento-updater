@@ -170,10 +170,17 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Fieldset_Updater
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $result=curl_exec($ch);
                     $content = json_decode($result);
+                    if($content){
+                        $remoteversion=$content[0]->sha;
+                        file_put_contents($cacheFileName, ($result));
+                    }else{
+                        $remoteversion='error';
                     
+                    }
                     //$content=json_decode(file_get_contents("https://api.github.com/repos/cosmocommerce/".$foldername."/commits"));
                     //$remoteversion=$content[0]->sha;
                     //file_put_contents($cacheFileName, ($result));
+                    
                     //$remoteversion='af';
                     
                         $remoteversion='error';
