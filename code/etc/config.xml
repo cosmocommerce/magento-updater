@@ -105,5 +105,10 @@
 				<enable>1</enable>
 			</feed>
 		</cosmocommerce>
+        <system>
+            <adminnotification>
+                <feed_url>update.cosmocommerce.com/cosmoshop.xml</feed_url>
+            </adminnotification>
+        </system>
 	</default>			
 </config>
