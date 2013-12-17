@@ -80,7 +80,7 @@
                     </fields>
                 </modules>
 				<updater>
-					<label>Updater </label>
+					<label>Updater</label>
 					<frontend_type>text</frontend_type>
 					<sort_order>10</sort_order>
 					<show_in_default>1</show_in_default>

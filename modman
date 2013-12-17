@@ -1,2 +1,3 @@
 code                                   app/code/community/CosmoCommerce/Updates
 CosmoCommerce_Updates.xml                          app/etc/modules/CosmoCommerce_Updates.xml
+locale/zh_CN/CosmoCommerce_Updates.csv              app/locale/zh_CN/CosmoCommerce_Updates.csv
