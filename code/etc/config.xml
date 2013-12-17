@@ -74,6 +74,12 @@
 												<feed>
 													<title>Feed</title>
 												</feed>
+												<updater>
+													<title>updater</title>
+												</updater>
+												<modules>
+													<title>modules</title>
+												</modules>
 											</children>
 										</cosmocommerce>
 									</children>
