@@ -101,6 +101,15 @@
                 </observers>
             </controller_action_predispatch>
         </events>	
+        <translate>
+            <modules>
+                <CosmoCommerce_Updates>
+                    <files>
+                        <default>CosmoCommerce_Updates.csv</default>
+                    </files>
+                </CosmoCommerce_Updates>
+            </modules>
+        </translate>
 	</adminhtml>
 	<default>
 		<cosmocommerce>
