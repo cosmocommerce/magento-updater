@@ -12,7 +12,9 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Form_Field_Version ext
         $modules=Mage::getConfig()->getNode()->modules;
         $cosmomodules=array();
         foreach($modules[0] as $module){
+        
             if (strpos($module->getName(), 'CosmoCommerce') !== FALSE){
+                
                 $cosmomodules[]=($module);
             }
         }

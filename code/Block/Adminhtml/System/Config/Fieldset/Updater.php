@@ -73,7 +73,6 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Fieldset_Updater
             //<![CDATA[
             function redirectToUpdate()
             {
-                console.log(this.value);
                 var url = "'.Mage::getSingleton("adminhtml/url")->getUrl("*/updates/update").'"+"?repo="+this.value;
                 if (confirm("模块将会更新代码.")) {
                     if (Prototype.Browser.IE) {
@@ -87,7 +86,6 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Fieldset_Updater
             }
             function redirectToUpdatef()
             {
-                console.log(this.value);
                 var url = "'.Mage::getSingleton("adminhtml/url")->getUrl("*/updates/updatef").'"+"?repo="+this.value;
                 if (confirm("模块将会强制覆盖代码.")) {
                     if (Prototype.Browser.IE) {
@@ -101,7 +99,6 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Fieldset_Updater
             }
             function redirectToCommit()
             {
-                console.log(this.value);
                 var url = "'.Mage::getSingleton("adminhtml/url")->getUrl("*/updates/commit").'"+"?repo="+this.value;
                 var note = prompt("请输入记录这次版本的备注");
                 url=url+"&note="+note;
@@ -137,6 +134,7 @@ class CosmoCommerce_Updates_Block_Adminhtml_System_Config_Fieldset_Updater
             $modman_path = Mage::getBaseDir('base').DS.'.modman';
             
             
+            return $html;
             $html.="<ul  style='font-size: 11px;padding:10px;'>";    
             foreach(glob($modman_path."/*",GLOB_ONLYDIR) as $_subfolder){
             
